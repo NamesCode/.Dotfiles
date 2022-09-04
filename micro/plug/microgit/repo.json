@@ -1,0 +1,15 @@
+[{
+  "Name": "microgit",
+  "Description": "Provide git integration to Micro",
+  "Tags": ["vcs", "git"],
+  "Website": "https://github.com/SleepyFugu/microgit-plugin",
+  "Versions": [
+		{
+			"Version": "1.0.0",
+			"Url": "https://github.com/SleepyFugu/microgit-plugin/archive/v1.0.0.zip",
+			"Require": {
+				"micro": ">=2.0.7",
+			}
+		},
+	]
+}]
