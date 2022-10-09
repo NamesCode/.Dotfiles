@@ -1,0 +1,20 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+yabai -m config \
+    window_border on \
+    window_border_width 4 \
+    window_shadow on \
+    active_window_border_color 0xe1f38ba8 \
+    normal_window_border_color 0x7df38ba8 \
+    insert_feedback_color 0xfff9e2af \
+
+APPS_OPACITY=(
+"Emacs"
+"kitty"
+"Discord"
+"LibreWolf"
+"Spotify"
+)
+for app in "${APPS_OPACITY[@]}"; do
+  yabai -m rule --add app="^$app\$" opacity=0.95
+done

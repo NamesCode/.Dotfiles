@@ -1,0 +1,34 @@
+# open kitty
+cmd + alt - t : open -a Kitty
+
+cmd + ctrl - t : killall kitty
+
+# open librewolf
+cmd + alt - l : export MOZ_DISABLE_SAFE_MODE_KEY=1; open "/Applications/LibreWolf.app"
+cmd + ctrl - l : killall librewolf
+
+#open discord
+cmd + alt - d : open -a Discord
+cmd + ctrl - d : killall Discord
+
+#open spotify
+cmd + alt - s [
+	"Spotify"	: spotify play uri spotify:playlist:0FdYlZGZlHufQbOjH5UyoW
+	*			: open -a Spotify
+]
+cmd + ctrl - s : killall Spotify
+
+#brew upgrade
+cmd + ctrl - b : brew upgrade; \
+				 brew cleanup
+
+#brew services restart
+cmd + alt - b : brew services restart sketchybar; \
+				brew services restart skhd; \
+                brew services restart yabai
+
+#open emacs
+cmd + alt - e : emacsclient -c; \
+				open -a emacs
+
+cmd + ctrl - e : open -a emacs
