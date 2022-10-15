@@ -3,10 +3,9 @@
 * .Dotfiles
 My dotfiles for anything and everything.
 ** MacOs
+[[RiceScreenshot.png]]
 I used the Catppuccin Mocha red colorscheme, you can find it[[https://github.com/catppuccin/catppuccin][ here]]
 Link to[[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs][ MacOs Dots]]
-[[~/.Dotfiles/RiceScreenshot.png]]
-
 *** Doom Emacs
 [[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/.doom.d][Files here]]
 *** Spicetify / Spotify
