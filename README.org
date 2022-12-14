@@ -12,8 +12,6 @@ Link to[[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs][ MacOs Dots]]
 [[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/spicetify][Files here]]
 *** Sketchybar
 [[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/sketchybar][Files here]]
-*** Kitty
-[[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/kitty][Files here]]
 *** Librewolf / Firefox
 I use the [[https://github.com/catppuccin/firefox][Catppuccin Mocha red Firefox theme]] and these browser extensions:
 - [[https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/][uBlock Origin]] (inbuilt in Librewolf)
