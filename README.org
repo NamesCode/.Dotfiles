@@ -13,7 +13,7 @@ Link to[[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs][ MacOs Dots]]
 *** Sketchybar
 [[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/sketchybar][Files here]]
 *** Kitty
- [[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/kitty][Files here]]
+[[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/kitty][Files here]]
 *** Librewolf / Firefox
 I use the [[https://github.com/catppuccin/firefox][Catppuccin Mocha red Firefox theme]] and these browser extensions:
 - [[https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/][uBlock Origin]] (inbuilt in Librewolf)
@@ -25,11 +25,11 @@ I use the [[https://github.com/catppuccin/firefox][Catppuccin Mocha red Firefox 
 - [[https://addons.mozilla.org/en-US/firefox/addon/to-google-translate/][To Google translate]]
 - [[https://addons.mozilla.org/en-US/firefox/addon/wikiwand-wikipedia-modernized/][WikiWand]]
 - [[https://addons.mozilla.org/en-US/firefox/addon/unpaywall/][UnPaywall]]
-*** Discord / Goosemod
-I cannot upload files here but I use the Nitro spoof plugin,[[https://github.com/catppuccin/discord][Catppuccin Mocha Discord theme]], Fuckalytics plugin and Who reacted plugin
+*** Discord / BetterDiscord
+[[https://github.com/catppuccin/discord][Catppuccin Mocha Discord theme]]
 *** SKHD
 [[https://github.com/NamesCode/.Dotfiles/blob/main/MacOs/.skhdrc][Files here]]
 *** Yabai
 [[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/yabai][Files here]]
 *** Wallpapers
- [[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/wallpapers][Files here]]
+[[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/wallpapers][Files here]]

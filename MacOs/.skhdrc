@@ -1,8 +1,3 @@
-# open kitty
-cmd + alt - t : open -a Kitty
-
-cmd + ctrl - t : killall kitty
-
 # open librewolf
 cmd + alt - l : export MOZ_DISABLE_SAFE_MODE_KEY=1; open "/Applications/LibreWolf.app"
 cmd + ctrl - l : killall librewolf
@@ -32,3 +27,8 @@ cmd + alt - e : emacsclient -c; \
 				open -a emacs
 
 cmd + ctrl - e : open -a emacs
+
+#XMRig
+cmd + alt - m : /Applications/xmrig-6.18.1/xmrig
+
+cmd + ctrl - m : killall xmrig

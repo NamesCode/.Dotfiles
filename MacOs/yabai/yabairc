@@ -8,6 +8,8 @@ yabai -m config \
     normal_window_border_color 0x7df38ba8 \
     insert_feedback_color 0xfff9e2af \
 
+yabai -m rule --add label="VLC" app="^VLC$" border=off
+
 APPS_OPACITY=(
 "Emacs"
 "kitty"

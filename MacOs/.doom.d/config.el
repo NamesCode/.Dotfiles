@@ -5,8 +5,11 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "Name"
+1(setq user-full-name "Name"
       user-mail-address "namesexistsinemails@gmail.com")
+
+(after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
+          projectile-project-root-files-bottom-up)))
 
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
   (lambda ()
@@ -15,10 +18,20 @@
      (rainbow-mode 1))))
 (global-rainbow-mode 1 )
 
+;; Doom frontpage
+(setq fancy-splash-image (concat doom-private-dir "splashes/Sexy.png"))
+
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+(add-hook! '+doom-dashboard-functions :append
+  (insert "\n" (+doom-dashboard--center +doom-dashboard--width "Fueled by lasagna.")))
+
+;; Make garbage collector less shit
+(setq gc-cons-threshold (* 250 1000 1000))
+
 (use-package autothemer
   :ensure t)
 
-(load-theme 'catppuccin-mocha t)
+(load-theme 'doom-catppuccin t)
 
 (use-package elcord
   :config
@@ -54,7 +67,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Documents/org")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an

@@ -437,7 +437,7 @@
   (centaur-tabs-close-unselected			(:background mantle :foreground overlay2))
 
   (centaur-tabs-close-mouse-face			(:background nil :foreground red))
-  (centaur-tabs-default						(:background mantle))
+  (centaur-tabs-default						(:background mantle :foreground mantle))
   (centaur-tabs-name-mouse-face				(:foreground blue :bold t))
 
   (git-gutter:added                              (:foreground green))
