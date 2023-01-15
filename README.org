@@ -23,6 +23,8 @@ I use the [[https://github.com/catppuccin/firefox][Catppuccin Mocha red Firefox 
 - [[https://addons.mozilla.org/en-US/firefox/addon/to-google-translate/][To Google translate]]
 - [[https://addons.mozilla.org/en-US/firefox/addon/wikiwand-wikipedia-modernized/][WikiWand]]
 - [[https://addons.mozilla.org/en-US/firefox/addon/unpaywall/][UnPaywall]]
+*** SearXNG
+I use a [[https://github.com/NamesCode/searxng]["custom"]] version of searXng which I selfhost on my home server. I use the [[https://github.com/catppuccin/SearXNG][Catppuccin theme]] for searXNG.
 *** Discord / BetterDiscord
 [[https://github.com/catppuccin/discord][Catppuccin Mocha Discord theme]]
 *** SKHD
