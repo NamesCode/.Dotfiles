@@ -25,11 +25,13 @@ I use the [[https://github.com/catppuccin/firefox][Catppuccin Mocha red Firefox 
 - [[https://addons.mozilla.org/en-US/firefox/addon/unpaywall/][UnPaywall]]
 *** SearXNG
 I use a [[https://github.com/NamesCode/searxng]["custom"]] version of searXng which I selfhost on my home server. I use the [[https://github.com/catppuccin/SearXNG][Catppuccin theme]] for searXNG.
-*** Discord / BetterDiscord
+*** OpenAsar / Discord
 [[https://github.com/catppuccin/discord][Catppuccin Mocha Discord theme]]
 *** SKHD
 [[https://github.com/NamesCode/.Dotfiles/blob/main/MacOs/.skhdrc][Files here]]
 *** Yabai
 [[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/yabai][Files here]]
 *** Wallpapers
-[[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/wallpapers][Files here]]
+[[https://github.com/NamesCode/.Dotfiles/tree/main/MacOs/Wallpapers][Files here]]
+*** Starship
+[[https:github.com/NamesCode/.Dotfiles/tree/main/MacOs/starship.toml][Files here]]

@@ -284,13 +284,13 @@
   (highlight-indent-guides-odd-face             (:foreground surface1))
 
    ;;;; ivy
-  (ivy-current-match                            (:background blue :foreground crust :bold t))
+  (ivy-current-match                            (:background maroon :foreground crust :bold t))
   (ivy-action                                   (:background nil :foreground lavender))
   (ivy-grep-line-number                         (:background nil :foreground peach))
   (ivy-minibuffer-match-face-1                  (:background nil :foreground blue :bold t))
   (ivy-minibuffer-match-face-2                  (:background nil :foreground green))
-  (ivy-minibuffer-match-highlight               (:foreground blue))
-  (ivy-grep-info                                (:foreground blue))
+  (ivy-minibuffer-match-highlight               (:foreground pink))
+  (ivy-grep-info                                (:foreground lavender))
   (ivy-grep-line-number                         (:foreground mauve))
   (ivy-confirm-face                             (:foreground green))
 

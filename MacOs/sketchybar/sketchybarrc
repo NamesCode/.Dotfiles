@@ -140,11 +140,6 @@ update_freq=1              \
 icon.color=0xffd08770      \
 script="bash $PLUGIN_DIR/sound.sh"
 
-sketchybar -m --add item vpn right \
-              --set vpn icon= \
-                        update_freq=5 \
-                        script="bash $PLUGIN_DIR/vpn.sh"
-
 SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 POPUP_SCRIPT="sketchybar -m --set \$NAME popup.drawing=toggle"
 
@@ -232,10 +227,6 @@ sketchybar -m --add       item               cpu_label right                    
                                              update_freq=2                                                 \
                                              script="bash $PLUGIN_DIR/cpu.sh"
 
-sketchybar -m --add item packages left \
-              --set packages update_freq=1 \
-              --set packages script="$PLUGIN_DIR/package_monitor.sh" \
-              --set packages label=
 
 ##### Finalizing Setup #####
 # The below command is only needed at the end of the initial configuration and

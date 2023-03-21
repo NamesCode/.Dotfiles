@@ -31,7 +31,8 @@
 (use-package autothemer
   :ensure t)
 
-(load-theme 'doom-catppuccin t)
+(load-theme 'catppuccin t t)
+(load-theme 'catppuccin t)
 
 (use-package elcord
   :config
