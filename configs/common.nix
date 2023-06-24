@@ -1,0 +1,11 @@
+[
+  apps/zsh.nix
+  apps/direnv.nix
+  apps/git.nix
+  apps/go.nix
+  apps/lsd.nix
+  apps/nix-index.nix
+  apps/node.nix
+  apps/python.nix
+  apps/rust.nix
+]

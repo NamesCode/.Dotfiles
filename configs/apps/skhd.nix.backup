@@ -1,0 +1,27 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  home = {
+    packages = [pkgs.skhd];
+  };
+  launchd = {
+    agents.skhd = {
+      enable = true;
+      config = {
+        ProgramArguments = ["${lib.getExe pkgs.skhd}"];
+        KeepAlive = true;
+        RunAtLoad = true;
+        ProcessType = "Interactive";
+      };
+    };
+  };
+  xdg.configFile = {
+    "skhd" = {
+      source = ../../ext/skhd;
+      recursive = true;
+    };
+  };
+}
