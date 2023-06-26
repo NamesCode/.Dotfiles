@@ -1,6 +1,9 @@
-{config, pkgs, lib, ...}: {
-
-  programs.zsh.enable = true;
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   services.nix-daemon.enable = true;
   users.users.Name.home = "/Users/Name";
   services.skhd = {
@@ -42,7 +45,8 @@
       "discord"
       "vlc"
       "appcleaner"
-      (noQuarantine "librewolf")
+      "mullvadvpn"
+      (noQuarantine "firefox")
       (noQuarantine "mutespotifyads")
     ];
     taps = ["homebrew/cask" "d12frosted/emacs-plus"];

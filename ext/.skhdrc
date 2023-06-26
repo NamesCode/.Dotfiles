@@ -1,6 +1,6 @@
-# open librewolf
-cmd + alt - l : export MOZ_DISABLE_SAFE_MODE_KEY=1; open "/Applications/LibreWolf.app"
-cmd + ctrl - l : killall librewolf
+# open firefox
+cmd + alt - f : export MOZ_DISABLE_SAFE_MODE_KEY=1; open "/Applications/Firefox.app"
+cmd + ctrl - f : killall firefox
 
 #open discord
 cmd + alt - d : open -a Discord

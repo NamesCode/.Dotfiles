@@ -1,4 +1,5 @@
 [
+  apps/firefox.nix
   apps/zsh.nix
   apps/direnv.nix
   apps/git.nix
@@ -8,4 +9,5 @@
   apps/node.nix
   apps/python.nix
   apps/rust.nix
+  apps/neovim.nix
 ]

@@ -20,34 +20,33 @@ in {
     "$HOME/.local/bin"
   ];
 
-  home.packages = builtins.trace "home package" [
-    pkgs.alejandra
-    pkgs.htop
-    pkgs.yarn
-    pkgs.xz
-    pkgs.ffmpeg
-    pkgs.scrcpy
-    pkgs.gnupg
-    pkgs.fd
-    pkgs.gh
-    pkgs.just
-    pkgs.tree-sitter
-    pkgs.imagemagick
-    pkgs.openssh
-    pkgs.postgresql
-    pkgs.ripgrep
-    pkgs.scc
-    pkgs.unzip
-    pkgs.wget
-    pkgs.spicetify-cli
-    pkgs.android-tools
-    pkgs.rnix-lsp
-    pkgs.neofetch
-    pkgs.vim
-    pkgs.nodejs
-    pkgs.bash
-    pkgs.fira-code
-    # pkgs.(nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+  home.packages = with pkgs; [
+    alejandra
+    htop
+    yarn
+    xz
+    ffmpeg
+    scrcpy
+    gnupg
+    fd
+    gh
+    just
+    tree-sitter
+    imagemagick
+    openssh
+    postgresql
+    ripgrep
+    scc
+    unzip
+    wget
+    spicetify-cli
+    android-tools
+    rnix-lsp
+    neofetch
+    nodejs
+    bash
+    fira-code
+    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
   ];
 
   targets.genericLinux.enable = pkgs.stdenv.isLinux;

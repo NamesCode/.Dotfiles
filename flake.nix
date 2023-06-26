@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur.url = "github:nix-community/nur";
     nekowinston-nur.url = "github:nekowinston/nur";
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -34,17 +35,17 @@
       system = machine.system;
     };
     overlays = [
-    #   # nur overlay
-    #   (final: prev: {
-    #     nur = import nur {
-    #       nurpkgs = prev;
-    #       pkgs = prev;
-    #       repoOverrides = {
-    #         # other repo overrides
-    #         nekowinston = nekowinston-nur.packages.${prev.system};
-    #       };
-    #     };
-    #   })
+      # nur overlay
+      (final: prev: {
+        nur = import nur {
+          nurpkgs = prev;
+          pkgs = prev;
+          #       repoOverrides = {
+          #         # other repo overrides
+          #         nekowinston = nekowinston-nur.packages.${prev.system};
+          #       };
+        };
+      })
       nekowinston-nur.overlays.default
     ];
   in {
@@ -62,6 +63,7 @@
           }: {
             config = {
               nixpkgs.overlays = overlays;
+              nixpkgs.config.allowUnfree = true;
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
@@ -69,10 +71,10 @@
                 sharedModules = [
                   inputs.nekowinston-nur.homeManagerModules.default
                 ];
-       users.${machine.username}.imports = [./home.nix];
-       extraSpecialArgs = {
-        inherit machine;
-      };
+                users.${machine.username}.imports = [./home.nix];
+                extraSpecialArgs = {
+                  inherit machine;
+                };
               };
             };
           })

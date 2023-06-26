@@ -1,12 +1,3 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "discord"
-    ];
-
+{pkgs, ...}: {
   home.packages = [(pkgs.discord.override {withOpenASAR = true;})];
 }
