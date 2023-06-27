@@ -1,11 +1,8 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+let
+  machine = import ../machine.nix;
+in {
   services.nix-daemon.enable = true;
-  users.users.Name.home = "/Users/Name";
+  users.users.${machine.username}.home = "/Users/${machine.username}";
   services.skhd = {
     enable = true;
     skhdConfig = builtins.readFile ../ext/.skhdrc;
