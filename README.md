@@ -1,10 +1,35 @@
-I use the [[https://github.com/catppuccin/firefox][Catppuccin Mocha red Firefox theme]] and these browser extensions:
-- [[https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/][uBlock Origin]] (inbuilt in Librewolf)
-- [[https://addons.mozilla.org/en-US/firefox/addon/custom-scrollbars/][Custom Scrollbars]] (Scrollbar thumb colour is #f38ba8ff, Scrollbar background colour is #313244ff)
-- [[https://addons.mozilla.org/en-US/firefox/addon/darkreader/][Dark Reader]] (Using [[https://github.com/catppuccin/dark-reader][Catppuccin Mocha red theme]])
-- [[https://addons.mozilla.org/en-US/firefox/addon/i-dont-care-about-cookies/][I don't care about cookies]]
-- [[https://addons.mozilla.org/en-US/firefox/addon/return-youtube-dislikes/][Return YouTube dislike]]
-- [[https://addons.mozilla.org/en-US/firefox/addon/search_by_image/][Search by image]]
-- [[https://addons.mozilla.org/en-US/firefox/addon/to-google-translate/][To Google translate]]
-- [[https://addons.mozilla.org/en-US/firefox/addon/wikiwand-wikipedia-modernized/][WikiWand]]
-- [[https://addons.mozilla.org/en-US/firefox/addon/unpaywall/][UnPaywall]]
+# Dotfiles
+
+![Dotfiles screenshot on macOS](RiceScreenshot.png)
+
+## Usage
+
+### macOS
+
+Install Xcode
+
+```bash
+xcode-select --install
+```
+
+Install Brew
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Install Nix
+
+```bash
+sh <(curl -L https://nixos.org/nix/install)
+```
+
+Then run
+
+```bash
+git clone https://github.com/NamesCode/.Dotfiles.git
+cd ./.Dotfiles
+echo '{ configs = configs/macos.nix; username = "'$(whoami)'"; }' > machine.nix
+nix --extra-experimental-features nix-command --extra-experimental-features flakes build .\#darwinConfigurations.NamesM2.system
+./result/sw/bin/darwin-rebuild switch --flake .
+```
