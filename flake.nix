@@ -32,7 +32,7 @@
     #   is-lightmode = inputs.is-lightmode.packages.${machine.system}.default;
     # };
     pkgs = import nixpkgs {
-      system = machine.system;
+      system = ["aarch64-darwin" "x86_64-darwin" "aarch64-linux" "x86_64-linux"];
     };
     overlays = [
       # nur overlay
