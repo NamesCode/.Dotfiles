@@ -51,9 +51,5 @@ in {
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
 
   xdg.configFile."nix/nix.conf".text = "experimental-features = nix-command flakes";
-
-  imports =
-    if pkgs.stdenv.isDarwin
-    then import ./configs/macos.nix
-    else import ./configs/linux.nix;
+  imports = import machine.configs;
 }
