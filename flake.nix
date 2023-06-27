@@ -13,10 +13,6 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # is-lightmode = {
-    #   url = "path:./scripts/is-lightmode";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = {
@@ -29,10 +25,9 @@
   } @ inputs: let
     machine = import ./machine.nix;
     # overlays = final: prev: {
-    #   is-lightmode = inputs.is-lightmode.packages.${machine.system}.default;
     # };
     pkgs = import nixpkgs {
-      system = ["aarch64-darwin" "x86_64-darwin" "aarch64-linux" "x86_64-linux"];
+      system = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
     };
     overlays = [
       # nur overlay
