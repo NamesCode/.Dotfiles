@@ -9,10 +9,8 @@
 Install Nix:
 
 ```bash
-sh <(curl -L https://nixos.org/nix/install) --daemon
-```
 
-Then ¯\_(ツ)\_/¯
+```
 
 ### macOS
 
@@ -51,11 +49,3 @@ git pull
 nix build .\#darwinConfigurations.NamesM2.system
 ./result/sw/bin/darwin-rebuild switch --flake .#NamesM2
 ```
-
-### Credits
-
-Wonderful people who helped me even get this in Nix:
-
-- [Winston](https://github.com/nekowinston)
-- [Pigeon](https://github.com/backwardspy)
-- [NyxKrage](https://github.com/nyxkrage)
