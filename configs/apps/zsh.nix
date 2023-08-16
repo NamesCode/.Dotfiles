@@ -72,6 +72,8 @@ in {
         export LESSHISTFILE="-"
         export ZVM_INIT_MODE="sourcing"
         export ZVM_CURSOR_BLINKING_BEAM="1"
+        export PATH=$PATH:/etc/profiles/per-user/Name/bin/
+        export TERM=xterm
       '';
 
       dotDir = ".config/zsh";
