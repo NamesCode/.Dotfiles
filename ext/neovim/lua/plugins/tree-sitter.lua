@@ -47,15 +47,9 @@ return {
   "nvim-treesitter/playground",
   "nvim-treesitter/nvim-treesitter-textobjects",
   "windwp/nvim-ts-autotag",
-  "hiphish/nvim-ts-rainbow2",
+  "hiphish/rainbow-delimiters.nvim",
 
   -- not treesitter, but close enough
-  {
-    "wuelnerdotexe/vim-astro",
-    config = function()
-      vim.g.astro_typescript = "enable"
-    end,
-  },
   "towolf/vim-helm",
   "NoahTheDuke/vim-just",
 }

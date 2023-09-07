@@ -1,113 +1,122 @@
 ---@type LazyPluginSpec[]
 return {
-	{
-		"andweeb/presence.nvim",
-		enabled = true,
-		config = function()
-			local presence = require("presence")
+  {
+    "andweeb/presence.nvim",
+    config = function()
+      local presence = require("presence")
 
-			local function starts_with(self, str)
-				return self:find("^" .. str) ~= nil
-			end
+      local function starts_with(self, str)
+        return self:find("^" .. str) ~= nil
+      end
 
-			local home = vim.fn.expand("$HOME") .. "/projects/"
+      local home = vim.fn.expand("$HOME") .. "/Code/"
 
-			local blacklist = {
-				[vim.fn.resolve(home .. "work")] = "I have a job somehow",
-				[vim.fn.resolve(home .. "freelance")] = "Some poor soul hired me to make something",
-				[vim.fn.resolve(vim.fn.stdpath("config"))] = "Configuring nvim. ("
-					.. require("lazy").stats().count
-					.. " plugins)",
-			}
+      local blacklist = {
+        [vim.fn.resolve(home .. "work")] = "Using nvim at work.",
+        [vim.fn.resolve(home .. "freelance")] = "Using nvim to freelance.",
+      }
 
-			local conceal = function(activity, info)
-				local cur_file = vim.fn.expand("%:p")
-				for k, v in pairs(blacklist) do
-					if starts_with(cur_file, k) then
-						return v
-					end
-				end
-				if info ~= nil then
-					return activity .. " " .. info
-				end
-			end
+      ---@param activity string?
+      ---@param info string?
+      ---@return {text: string, state: boolean}
+      local conceal = function(activity, info)
+        local cur_file = vim.fn.expand("%:p")
+        for k, v in pairs(blacklist) do
+          if starts_with(cur_file, k) then
+            return { text = v, state = true }
+          end
+        end
+        if info ~= nil then
+          return { text = activity .. " " .. info, state = false }
+        end
+        return { text = activity, state = false }
+      end
 
-			local v = vim.version()
-			local vStr = string.format("v%d.%d.%d", v.major, v.minor, v.patch)
+      local v = vim.version()
+      local vStr = string.format("v%d.%d.%d", v.major, v.minor, v.patch)
 
-			presence:setup({
-				-- General options
-				auto_update = true,
-				debounce_timeout = 10,
-				neovim_image_text = "Neovim " .. vStr,
-				-- Main image display (either "neovim" or "file")
-				main_image = "file",
-				show_time = false,
-				buttons = function(_, repo_url)
-					local concealed = conceal()
-					if concealed then
-						return {
-							{
-								label = "Steal what I stole to make stuff",
-								url = "https://github.com/NamesCode/.Dotfiles",
-							},
-						}
-					else
-						return {
-							{
-								label = "Critize my shitty code",
-								url = repo_url,
-							},
-						}
-					end
-				end,
-				file_assets = {
-					["k8s.yaml"] = {
-						"Kubernetes",
-						"https://avatars.githubusercontent.com/u/13629408",
-					},
-					["Chart.yaml"] = {
-						"Helm Chart",
-						"https://raw.githubusercontent.com/helm/community/main/art/images/Logo-Tweak-Dark.png",
-					},
-					["helmfile.yaml"] = {
-						"helmfile",
-						"https://raw.githubusercontent.com/helm/community/main/art/images/Logo-Tweak-Dark.png",
-					},
-					["prisma"] = {
-						"Prisma",
-						"https://avatars.githubusercontent.com/u/17219288",
-					},
-					["bu"] = {
-						"Butane Config",
-						"https://avatars.githubusercontent.com/u/3730757",
-					},
-					["ign"] = {
-						"CoreOS Ignition",
-						"https://avatars.githubusercontent.com/u/3730757",
-					},
-				},
-				-- Rich Presence text options
-				editing_text = function(s)
-					return conceal("Editing", s)
-				end,
-				reading_text = function(s)
-					return conceal("Reading", s)
-				end,
-				file_explorer_text = function(s)
-					return conceal("Browsing", s)
-				end,
-				workspace_text = function(s)
-					local concealed = conceal()
-					if s ~= nil and not concealed then
-						return "Working on " .. s
-					else
-						return nil
-					end
-				end,
-				git_commit_text = "Committing changes",
-				plugin_manager_text = "Managing Plugins",
-			})
-		end,
-	},
+      presence:setup({
+        auto_update = true,
+        debounce_timeout = 10,
+        neovim_image_text = "Neovim " .. vStr,
+        -- Main image display (either "neovim" or "file")
+        main_image = "file",
+        show_time = true,
+        enable_line_number = true,
+        buttons = function(_, repo_url)
+          local concealed = conceal().state
+
+          if concealed then
+            return {
+              {
+                label = "View my config",
+                url = "https://github.com/nekowinston/dotfiles",
+              },
+            }
+          else
+            return {
+              {
+                label = "Steal the code",
+                url = repo_url,
+              },
+            }
+          end
+        end,
+        file_assets = {
+          ["d"] = {
+            "Dlang",
+            "https://github.com/dlang.png",
+          },
+          ["astro"] = {
+            "Astro",
+            "https://github.com/withastro.png",
+          },
+          ["k8s.yaml"] = {
+            "Kubernetes",
+            "https://github.com/kubernetes.png",
+          },
+          ["Chart.yaml"] = {
+            "Helm Chart",
+            "https://raw.githubusercontent.com/helm/community/main/art/images/Logo-Tweak-Dark.png",
+          },
+          ["helmfile.yaml"] = {
+            "helmfile",
+            "https://raw.githubusercontent.com/helm/community/main/art/images/Logo-Tweak-Dark.png",
+          },
+          ["prisma"] = {
+            "Prisma",
+            "https://github.com/prisma.png",
+          },
+          ["bu"] = {
+            "Butane Config",
+            "https://github.com/coreos.png",
+          },
+          ["ign"] = {
+            "CoreOS Ignition",
+            "https://github.com/coreos.png",
+          },
+        },
+        -- Rich Presence text options
+        editing_text = function(s)
+          return conceal("Editing", s).text
+        end,
+        reading_text = function(s)
+          return conceal("Reading", s).text
+        end,
+        file_explorer_text = function(s)
+          return conceal("Browsing", s).text
+        end,
+        workspace_text = function(s)
+          local concealed = conceal()
+          if s ~= nil and not concealed.state then
+            return "Working on " .. s
+          else
+            return nil
+          end
+        end,
+        git_commit_text = "Committing changes",
+        plugin_manager_text = "Managing Plugins",
+      })
+    end,
+  },
 }

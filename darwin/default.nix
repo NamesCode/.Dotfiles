@@ -17,6 +17,11 @@ in {
     extraConfig = builtins.readFile ../ext/yabairc;
   };
 
+  services.sketchybar = {
+    enable = true;
+    #config = builtins.readFile ../ext/sketchybar/sketchybarrc;
+  };
+
   homebrew = {
     enable = true;
     caskArgs.require_sha = true;

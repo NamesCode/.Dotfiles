@@ -95,16 +95,17 @@ cmp.setup({
   },
 })
 
-cmp.setup.filetype({ "gitcommit", "NeogitCommitMessage" }, {
+local git_ft = { "gitcommit", "NeogitCommitMessage", "Octo" }
+cmp.setup.filetype(git_ft, {
   sources = cmp.config.sources({
-    { name = "cmp_git" },
+    { name = "git" },
   }, {
     { name = "buffer" },
   }),
 })
-
 require("cmp_git").setup({
-  filetypes = { "gitcommit", "NeogitCommitMessage", "Octo" },
+  filetypes = git_ft,
+  enableRemoteUrlRewrites = true,
 })
 
 cmp.setup.cmdline({ "/", "?" }, {
@@ -172,14 +173,23 @@ require("lsp.webdev").setup(common)
 pcall(require("py_lsp").setup, common)
 pcall(require("rust-tools").setup, { server = common })
 
+lspconfig.nil_ls.setup(vim.tbl_extend("keep", {
+  settings = {
+    ["nil"] = {
+      formatting = { command = { "alejandra" } },
+      nix = { maxMemoryMB = nil },
+    },
+  },
+}, common))
+
 local servers = {
   "astro",
   "bashls",
   "dockerls",
   "helm_ls",
   "jqls",
-  "nil_ls",
   "lua_ls",
+  "serve_d",
   "taplo",
   "teal_ls",
 }

@@ -23,7 +23,7 @@ sketchybar -m --bar blur_radius=50                                              
                     height=32                                                                 \
               --add item apple.logo left                                                      \
               --set apple.logo icon=〄                                                         \
-                               icon.font="Hack Nerd Font regular:Bold:16.0"                                  \
+                               icon.font="Symbols Nerd Font:Regular:16.0"                                  \
                                label.drawing=off                                              \
                                click_script="sketchybar -m --set \$NAME popup.drawing=toggle" \
                                popup.background.border_width=2                                \
@@ -33,8 +33,8 @@ sketchybar -m --bar blur_radius=50                                              
               --default background.padding_left=5                                             \
                         background.padding_right=5                                            \
                         icon.padding_right=5                                                  \
-                        icon.font="Hack Nerd Font Regular:Bold:16.0"                                          \
-                        label.font="Hack Nerd Font Regular:Semibold:13.0"                                     \
+                        icon.font="Symbols Nerd Font:Regular:16.0"                                          \
+                        label.font="Symbols Nerd Font:Regular:13.0"                                     \
                                                                                               \
               --add item apple.preferences popup.apple.logo                                   \
               --set apple.preferences icon=⚒︎                                                  \
@@ -60,7 +60,7 @@ sketchybar -m --bar blur_radius=50                                              
 
 sketchybar --default updates=when_shown                    \
                      drawing=on                            \
-                     icon.font="Hack Nerd Font:Bold:17.0"  \
+                     icon.font="Symbols Nerd Font:Regular:17.0"  \
                      icon.color=0xffffffff                 \
                      label.font="Fira Code Bold:Bold:14.0"      \
                      label.color=0xffffffff                \
@@ -209,11 +209,6 @@ sketchybar -m --add       item               time             right             
                                              background.height=15                                          \
                                              background.corner_radius=4                                    \
                                              script="bash $PLUGIN_DIR/date.sh"
-
-sketchybar -m --add item mic right \
-sketchybar -m --set mic update_freq=3 \
-              --set mic script="bash $PLUGIN_DIR/mic.sh" \
-              --set mic click_script="bash $PLUGIN_DIR/mic_click.sh"
 
 sketchybar -m --add       item               cpu_label right                                               \
               --set       cpu_label          label.font="Fira Code Bold:Semibold:7"                                \
