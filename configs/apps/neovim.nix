@@ -60,6 +60,7 @@
       nodePackages.intelephense
       nodePackages.typescript
       nodePackages.typescript-language-server
+      nodePackages.svelte-language-server
       nodePackages.vscode-css-languageserver-bin
       nodePackages.vscode-html-languageserver-bin
       nodePackages.vscode-json-languageserver-bin
@@ -84,7 +85,7 @@
       tree-sitter
       # pkgs.nur.repos.nekowinston.jq-lsp
       # pkgs.nur.repos.nekowinston.helm-ls
-      # pkgs.nur.repos.bandithedoge.nodePackages.emmet-ls
+      pkgs.nur.repos.bandithedoge.nodePackages.emmet-ls
 
       # nvim-spectre
       gnused

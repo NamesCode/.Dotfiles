@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.yabai = {
     enable = true;
     package = pkgs.nur.repos.nekowinston-nur.yabai;

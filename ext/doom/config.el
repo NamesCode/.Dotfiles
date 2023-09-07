@@ -6,9 +6,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 1(setq user-full-name "Name"
-      user-mail-address "namesexistsinemails@gmail.com")
-
-(add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+      user-mail-address "nameexistsinemails@gmail.com")
 
 (after! projectile (setq projectile-project-root-files-bottom-up (remove ".git"
           projectile-project-root-files-bottom-up)))
@@ -34,9 +32,6 @@
 (load-theme 'catppuccin t t)
 (catppuccin-set-color 'rosewater "#f38ba8")
 (catppuccin-reload)
-
-(setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode)
 
 (setq lsp-ui-doc-enable t)
 (setq lsp-ui-doc-delay 2)
@@ -78,7 +73,7 @@
 (setq doom-font (font-spec :family "Fira Code" :size 12))
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -86,7 +81,6 @@
 
 
 
-(setq display-line-numbers 'relative)
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;

@@ -40,6 +40,7 @@ Then run:
 git clone https://github.com/NamesCode/.Dotfiles.git
 cd ./.Dotfiles
 echo '{ configs = configs/macos.nix; username = "'$(whoami)'"; }' > machine.nix
+git add machine.nix
 nix --extra-experimental-features nix-command --extra-experimental-features flakes build .\#darwinConfigurations.NamesM2.system
 ./result/sw/bin/darwin-rebuild switch --flake .#NamesM2
 ```

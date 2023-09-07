@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 yabai -m config \
@@ -14,11 +16,11 @@ yabai -m rule --add label="VLC" app="^VLC$" border=off
 APPS_OPACITY=(
 "Emacs"
 "Discord"
-"LibreWolf"
+"Firefox"
 "Spotify"
 )
 for app in "${APPS_OPACITY[@]}"; do
-  yabai -m rule --add app="^$app\$" opacity=0.95
+  yabai -m rule --add app="^$app\$" opacity=0.85
 done
 
 # ====== Variables =============================

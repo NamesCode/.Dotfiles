@@ -1,4 +1,9 @@
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   machine = import ../machine.nix;
 in {
   services.nix-daemon.enable = true;
@@ -31,6 +36,7 @@ in {
       };
     in [
       "discord"
+      "blender"
       "docker"
       "mullvadvpn"
       "utm"
@@ -38,11 +44,14 @@ in {
       "balenaetcher"
       (skipSha "spotify")
       "gimp"
-      "olive"
+      (noQuarantine "olive")
       "discord"
       "vlc"
+      (noQuarantine "chiaki")
       "appcleaner"
       "mullvadvpn"
+      "visual-studio-code"
+      (noQuarantine "eloston-chromium")
       (noQuarantine "firefox")
       (noQuarantine "mutespotifyads")
     ];

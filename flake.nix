@@ -8,7 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/nur";
-    nekowinston-nur.url = "github:nekowinston/nur";
+    nekowinston-nur = {
+      url = "github:nekowinston/nur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,8 +27,6 @@
     ...
   } @ inputs: let
     machine = import ./machine.nix;
-    # overlays = final: prev: {
-    # };
     pkgs = import nixpkgs {
       system = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
     };
@@ -35,10 +36,10 @@
         nur = import nur {
           nurpkgs = prev;
           pkgs = prev;
-          #       repoOverrides = {
-          #         # other repo overrides
-          #         nekowinston = nekowinston-nur.packages.${prev.system};
-          #       };
+          repoOverrides = {
+            # other repo overrides
+            nekowinston = nekowinston-nur.packages.${prev.system};
+          };
         };
       })
       nekowinston-nur.overlays.default
@@ -81,20 +82,20 @@
       modules = [
         ./home.nix
 
-        # ({config, ...}: {
-        #   config = {
-        #     nixpkgs.overlays = [overlays];
-        #   };
-        # })
+        ({config, ...}: {
+          config = {
+            nixpkgs.overlays = [overlays];
+          };
+        })
       ];
-      # overlays = [
-      #   (final: prev: {
-      #     nur = import nur {
-      #       nurpkgs = prev;
-      #       pkgs = prev;
-      #                 };
-      #   })
-      # ];
+      overlays = [
+        (final: prev: {
+          nur = import nur {
+            nurpkgs = prev;
+            pkgs = prev;
+          };
+        })
+      ];
       extraSpecialArgs = {
         inherit machine;
       };

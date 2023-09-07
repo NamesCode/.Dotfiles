@@ -19,16 +19,11 @@ cmd + alt - b : brew services restart sketchybar; \
                 brew services restart yabai
 
 #open emacs
-cmd + alt - e : emacsclient -c; \
-				open -a emacs
+cmd + alt - e : open -a emacs
 
-cmd + ctrl - e : open -a emacs
-
-#XMRig
-cmd + alt - m : ~/Crypto/Monero/xmrig-6.19.0/xmrig
-
-cmd + ctrl - m : killall xmrig
-
+# Wezterm
+cmd + alt - t : wezterm
+cmd + ctrl - t : killall wezterm-gui
 
 ### Yabai
 

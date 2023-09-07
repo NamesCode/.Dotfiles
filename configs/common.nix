@@ -1,4 +1,5 @@
 [
+  apps/wezterm.nix
   apps/firefox.nix
   apps/zsh.nix
   apps/direnv.nix
