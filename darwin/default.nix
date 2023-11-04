@@ -19,11 +19,6 @@ in {
 
   services.sketchybar = {
     enable = true;
-
-    xdg.configFile."sketchybar" = {
-      source = ../../ext/sketchybar;
-      recursive = true;
-    };
   };
 
   homebrew = {
