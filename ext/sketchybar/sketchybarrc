@@ -133,13 +133,6 @@ sketchybar \
                          background.padding_right=12     \
                          update_freq=5
 
-sketchybar                 \
---add item sound right     \
---set sound                \
-update_freq=1              \
-icon.color=0xffd08770      \
-script="bash $PLUGIN_DIR/sound.sh"
-
 SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 POPUP_SCRIPT="sketchybar -m --set \$NAME popup.drawing=toggle"
 
