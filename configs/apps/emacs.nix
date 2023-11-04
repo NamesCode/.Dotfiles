@@ -13,8 +13,6 @@
     };
   };
 
-  here
-
   systemd.user.sessionVariables = config.home.sessionVariables;
 
   programs.emacs.enable = true;
