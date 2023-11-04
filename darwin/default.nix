@@ -19,7 +19,11 @@ in {
 
   services.sketchybar = {
     enable = true;
-    #config = builtins.readFile ../ext/sketchybar/sketchybarrc;
+
+    xdg.configFile."sketchybar" = {
+      source = ../../ext/sketchybar;
+      recursive = true;
+    };
   };
 
   homebrew = {
@@ -40,12 +44,13 @@ in {
         args = {no_quarantine = true;};
       };
     in [
+      "jellyfin-media-player"
       "discord"
+      (noQuarantine "qbittorrent")
+      (skipSha "element")
       "blender"
-      "docker"
       "mullvadvpn"
       "utm"
-      "maccy"
       "balenaetcher"
       (skipSha "spotify")
       "gimp"
@@ -54,9 +59,6 @@ in {
       "vlc"
       (noQuarantine "chiaki")
       "appcleaner"
-      "mullvadvpn"
-      "visual-studio-code"
-      (noQuarantine "eloston-chromium")
       (noQuarantine "firefox")
       (noQuarantine "mutespotifyads")
     ];

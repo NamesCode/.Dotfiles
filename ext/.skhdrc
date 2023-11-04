@@ -47,6 +47,7 @@ shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
 shift + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
 shift + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
 shift + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
+shift + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
 
 # Resize windows
 lctrl + alt - h : yabai -m window --resize left:-50:0; \
