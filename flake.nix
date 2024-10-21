@@ -1,104 +1,29 @@
 {
-  description = "Name's Nix config";
+  description = "Name's Nix system";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nur.url = "github:nix-community/nur";
-    nekowinston-nur = {
-      url = "github:nekowinston/nur";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    darwin = {
-      url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = {
+    self,
     nixpkgs,
-    home-manager,
-    nekowinston-nur,
-    nur,
-    darwin,
     ...
   } @ inputs: let
-    machine = import ./machine.nix;
+    system = "aarch64-linux";
     pkgs = import nixpkgs {
-      system = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
+      inherit system;
+      config = {allowUnfree = true;};
     };
-    overlays = [
-      # nur overlay
-      (final: prev: {
-        nur = import nur {
-          nurpkgs = prev;
-          pkgs = prev;
-          repoOverrides = {
-            # other repo overrides
-            nekowinston = nekowinston-nur.packages.${prev.system};
-          };
-        };
-      })
-      nekowinston-nur.overlays.default
-    ];
   in {
-    darwinConfigurations = {
-      "NamesM2" = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./darwin
-          home-manager.darwinModules.home-manager
-          inputs.nekowinston-nur.darwinModules.default
-          ({
-            config,
-            pkgs,
-            ...
-          }: {
-            config = {
-              nixpkgs.overlays = overlays;
-              nixpkgs.config.allowUnfree = true;
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                sharedModules = [
-                  inputs.nekowinston-nur.homeManagerModules.default
-                ];
-                users.${machine.username}.imports = [./home.nix];
-                extraSpecialArgs = {
-                  inherit machine;
-                };
-              };
-            };
-          })
-        ];
-      };
-    };
-    homeConfigurations.${machine.username} = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [
-        ./home.nix
-
-        ({config, ...}: {
-          config = {
-            nixpkgs.overlays = [overlays];
-          };
-        })
-      ];
-      overlays = [
-        (final: prev: {
-          nur = import nur {
-            nurpkgs = prev;
-            pkgs = prev;
-          };
-        })
-      ];
-      extraSpecialArgs = {
-        inherit machine;
-      };
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+    nixosConfigurations."navi" = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit system;};
+      modules = [./systems/navi/configuration.nix inputs.home-manager.nixosModules.home-manager];
     };
   };
 }

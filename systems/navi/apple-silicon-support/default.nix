@@ -1,0 +1,3 @@
+{...}: {
+  imports = [./modules/default.nix];
+}

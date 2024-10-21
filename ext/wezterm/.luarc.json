@@ -1,4 +1,0 @@
-{
-  "Lua.runtime.version": "Lua 5.4",
-  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json"
-}
