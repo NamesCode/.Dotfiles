@@ -1,0 +1,25 @@
+From 3c49f1c7d4bc09cda340731341ff325bb4da0858 Mon Sep 17 00:00:00 2001
+From: Name <lasagna@garfunkles.space>
+Date: Wed, 30 Oct 2024 04:33:29 +0000
+Subject: [PATCH] ctp
+
+---
+ config.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+ create mode 100644 config.h
+
+diff --git a/config.h b/config.h
+new file mode 100644
+index 0000000..2ced19c
+--- /dev/null
++++ b/config.h
+@@ -0,0 +1,6 @@
++static const char *colors[SchemeLast][2] = {
++	/*     fg         bg       */
++	[SchemeNorm] = { "#cdd6f4", "#1e1e2e" },
++	[SchemeSel] = { "#1e1e2e", "#f38ba8" },
++	[SchemeOut] = { "#000000", "#f38ba8" },
++};
+-- 
+2.46.1
+
