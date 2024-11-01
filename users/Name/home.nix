@@ -96,9 +96,12 @@ in
   #
   #  /etc/profiles/per-user/Name/etc/profile.d/hm-session-vars.sh
   #
-  programs.bash.enable = true;
   home.sessionVariables = {
     EDITOR = "vim";
+  };
+  home.shellAliases = {
+    # Sad times, I dont have my neovim conf. Once again I will steal winstons.
+    "nvim" = "nix run github:nekowinston/neovim.drv -- ";
   };
 
   programs.git = {
