@@ -1,8 +1,11 @@
 #!/usr/bin/env sh
 
 DATE=$(date '+%Y-%m-%d')
-FILENAME=$(printf "%s\nscreenshot\nquit\n" "$DATE" | dmenu)
+FILENAME=$(printf "%s\nscreenshot\nclipboard\nquit\n" "$DATE" | dmenu)
 
-if [ "$FILENAME" != "quit" ]; then
-  grim -g "$(slurp)" "$FILENAME.png"
+
+if [ "$FILENAME" == "clipboard" ]; then
+  grim -g "$(slurp -d)" - | wl-copy
+elif [ "$FILENAME" != "quit" ] && [ "$FILENAME" != "" ]; then
+  grim -g "$(slurp -d)" "$FILENAME.png"
 fi

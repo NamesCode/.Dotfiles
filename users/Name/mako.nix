@@ -7,14 +7,14 @@
   # Configure mako
   services.mako = {
     enable = true;
-    height = 30;
-    width = 60;
-    textColor = "cdd6f4";
+    width = 350;
+    textColor = "#cdd6f4";
     borderColor = "#f38ba8";
+    borderSize = 2;
     backgroundColor = "#1e1e2e";
+    progressColor = "#313244";
     layer = "overlay";
     sort = "+priority";
-    font = "Courier";
-    groupBy = "app-name";
+    font = "${config.vars.mainFont}";
   };
 }

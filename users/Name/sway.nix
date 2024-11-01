@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  wallpaper,
   ...
 }:
 let
@@ -18,7 +17,10 @@ in
 
     config = {
       # Sets the wallpaper for all outputs
-      output."*".bg = "${wallpaper} fill";
+      output."*".bg = "${config.vars.wallpaper} fill";
+      
+      fonts.names = [ "${config.vars.mainFont}" ];
+
       # Opens in workspace 1
       defaultWorkspace = "workspace number 1";
       colors = {
@@ -84,7 +86,7 @@ in
         "${modifier}+F2" = "exec brightnessctl s 10+";
         "${modifier}+Shift+F2" = "exec brightnessctl s 100%";
 
-        "${modifier}+F10" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0";
+        "${modifier}+F10" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
         "${modifier}+F11" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
         "${modifier}+F12" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
 
@@ -163,9 +165,9 @@ in
     enable = true;
     settings = {
       color = "#1e1e2e";
-      image = "${wallpaper}";
+      image = "${config.vars.wallpaper}";
       scaling = "fill";
-      font = "Courier";
+      font = "${config.vars.mainFont}";
       font-size = 35;
       inside-color = "#1e1e2ebb";
       inside-clear-color = "#1e1e2ebb";

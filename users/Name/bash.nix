@@ -10,7 +10,7 @@
     enableCompletion = true;
     historySize = 100;
     historyFileSize = 100000;
-    historyControl = "erasedups";
-    profileExtra = {"bai baiii~ <3"};
+    historyControl = ["erasedups"];
+    profileExtra = "echo 'hai haiii haiiiiii~ <3'";
   };
 }

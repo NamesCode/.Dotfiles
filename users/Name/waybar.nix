@@ -27,18 +27,27 @@
           max-length = 20;
         };
 
+        cpu = {
+          format = "  {usage}%";
+        };
+
         clock = {
+          format = "  {:%H:%M}";
           tooltip = true;
           # Refer to https://fmt.dev/latest/syntax/#chrono-format-specifications for the format
           tooltip-format = "{:%a %d %b %Y | %Y-%m-%d}";
         };
 
         network = {
-          format = "{bandwidthTotalBytes} {frequency}GHz";
+          format = "   {bandwidthTotalBytes} {frequency}GHz";
+          format-disconnected = " ";
           interval = 5;
         };
 
         battery = {
+          format = "{icon} {capacity}%";
+          format-charging = "  {capacity}%";
+          format-icons = [ " " " " " " " " " " ];
           states = {
             "low" = 25;
             "medium" = 75;
@@ -47,12 +56,10 @@
         };
 
         wireplumber = {
-          on-click = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0";
-          states = {
-            "low" = 25;
-            "medium" = 50;
-            "loud" = 75;
-          };
+          format-muted = "  {volume}%";
+          format = "{icon} {volume}%";
+          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          format-icons = [ " " " "  ];
         };
 
         # Example on how to write a custom module
@@ -70,7 +77,7 @@
        * {
          border: none;
          border-radius: 0;
-         font-family: Courier;
+         font-family: "JetBrains Mono", "Fira Code";
          color: #cdd6f4;
        }
 
@@ -139,7 +146,7 @@
        /* CSS for the right side */
        #cpu, #clock, #wireplumber, #network, #battery {
          background: rgba(24, 24, 37, 0.85);
-         padding: 0px 1.5px;
+         padding: 0px 2px;
          border-bottom: 1px solid #cdd6f4;
        }
 
@@ -157,16 +164,7 @@
 
        #wireplumber {
          border-color: #f9e2af;
-         color: rgba(249, 226, 175, 0.85);
-       }
-       #wireplumber.low {
-         color: rgba(249, 226, 175, 0.90);
-       }
-       #wireplumber.medium {
-         color: rgba(249, 226, 175, 0.95);
-       }
-       #wireplumber.loud {
-         color: rgba(249, 226, 175, 1);
+         color: #f9e2af;
        }
 
        #network {

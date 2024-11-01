@@ -3,15 +3,11 @@
   pkgs,
   ...
 }:
-let
-  homeDir = "/home/Name";
-  wallpaper = builtins.path { path = ../../modules/impure/wallpapers/garfield_wallpaper.png; name = "wallpaper"; };
-in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "Name";
-  home.homeDirectory = homeDir;
+  home.homeDirectory = "/home/${config.home.username}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -22,18 +18,15 @@ in
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
+  # Lets the system find fonts when installed through HM
+  fonts.fontconfig.enableProfileFonts = true;
+
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    #pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+  home.packages = with pkgs; [
+    # Install patches dev fonts
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -62,10 +55,10 @@ in
   xdg = {
     enable = true;
 
-    configHome = "${homeDir}/.xdg/etc/";
-    cacheHome = "${homeDir}/.xdg/var/cache/";
-    dataHome = "/home/Name/.xdg/usr/share/";
-    stateHome = "${homeDir}/.xdg/var/lib/";
+    configHome = "${config.home.homeDirectory}/.xdg/etc/";
+    cacheHome = "${config.home.homeDirectory}/.xdg/var/cache/";
+    dataHome = "${config.home.homeDirectory}/.xdg/usr/share/";
+    stateHome = "${config.home.homeDirectory}/.xdg/var/lib/";
 
     dataFile = {
       "scripts/screenshot.sh" = {
@@ -76,9 +69,15 @@ in
     };
   };
 
+  # Define variables used across modules
+  vars = {
+    mainFont = "JetBrains Mono";
+    wallpaper = ../../modules/impure/wallpapers/garfield_wallpaper.png;
+  };
+
   # Imports the modules for different configs.
-  imports = [ (import ./sway.nix { inherit config pkgs wallpaper; })
- ./bash.nix ./waybar.nix ./mako.nix ];
+  imports = [ ./sway.nix
+  ./bash.nix ./waybar.nix ./mako.nix ../../modules/home-manager/lib.nix];
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
