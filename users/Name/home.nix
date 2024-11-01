@@ -2,11 +2,16 @@
   config,
   pkgs,
   ...
-}: {
+}:
+let
+  homeDir = "/home/Name";
+  wallpaper = builtins.path { path = ../../modules/impure/wallpapers/garfield_wallpaper.png; name = "wallpaper"; };
+in
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "Name";
-  home.homeDirectory = "/home/Name";
+  home.homeDirectory = homeDir;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -53,6 +58,28 @@
     # '';
   };
 
+  # XDG setup
+  xdg = {
+    enable = true;
+
+    configHome = "${homeDir}/.xdg/etc/";
+    cacheHome = "${homeDir}/.xdg/var/cache/";
+    dataHome = "/home/Name/.xdg/usr/share/";
+    stateHome = "${homeDir}/.xdg/var/lib/";
+
+    dataFile = {
+      "scripts/screenshot.sh" = {
+        enable = true;
+        executable = true;
+        source = ../../modules/impure/scripts/screenshot.sh;
+      };
+    };
+  };
+
+  # Imports the modules for different configs.
+  imports = [ (import ./sway.nix { inherit config pkgs wallpaper; })
+ ./bash.nix ./waybar.nix ./mako.nix ];
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
@@ -69,6 +96,7 @@
   #
   #  /etc/profiles/per-user/Name/etc/profile.d/hm-session-vars.sh
   #
+  programs.bash.enable = true;
   home.sessionVariables = {
     EDITOR = "vim";
   };

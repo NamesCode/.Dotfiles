@@ -14,7 +14,6 @@ in
   # Configure Sway
   wayland.windowManager.sway = {
     enable = true;
-    systemd.enable = true;
     package = null;
 
     config = {
@@ -146,7 +145,10 @@ in
 
       focus.followMouse = false;
       startup = [
+        # Since we don't use SystemD for Sway, we must exec Swayidle through Sway
         { command = "${pkgs.swayidle}/bin/swayidle timeout 120 'swaylock -f' timeout 240 'systemctl suspend' before-sleep 'swaylock -f' lock 'swaylock -f'"; }
+        { command = "${pkgs.mako}/bin/mako --config ${config.xdg.configHome}/mako/config"; }
+        # Apps
         { command = "firefox"; }
         { command = "foot"; }
       ];
@@ -156,6 +158,7 @@ in
     };
   };
 
+  # Configure swaylock
   programs.swaylock = {
     enable = true;
     settings = {
@@ -198,9 +201,6 @@ in
     
     # Clipboard
     pkgs.wl-clipboard
-
-    # Notifications
-    pkgs.mako
 
     # General launcher
     pkgs.dmenu
