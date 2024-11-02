@@ -7,8 +7,6 @@
   modifier = "Mod4";
   # Keyboard backlight device
   keyboard = "kbd_backlight";
-  # Patch dmenu to theme it because its a suckless util
-  ctp-dmenu = pkgs.dmenu.override( { patches = [ ../../modules/impure/patches/ctp-dmenu.patch ];} );
 in {
   # Configure Sway
   wayland.windowManager.sway = {
@@ -72,7 +70,7 @@ in {
       keybindings = {
         # General binds
         "${modifier}+q" = "kill";
-        "${modifier}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
+        "${modifier}+d" = "exec $(${pkgs.tofi}/bin/tofi-run)";
         "${modifier}+r" = "mode resize";
 
         "${modifier}+Shift+r" = "reload";
@@ -200,19 +198,15 @@ in {
     };
   };
 
-  home.packages = [
+  home.packages = with pkgs; [
     # Screenshots
-    pkgs.grim
-    pkgs.slurp
+    grim
+    slurp
 
     # Clipboard
-    pkgs.wl-clipboard
-
-    # General launcher
-    # pkgs.dmenu
-    ctp-dmenu
+    wl-clipboard
 
     # Handle idling
-    pkgs.swayidle
+    swayidle
   ];
 }

@@ -25,7 +25,12 @@
   home.packages = with pkgs; [
     # Install patches dev fonts
     (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+    
+    # View system resource usage nicely
     htop
+
+    # Better tools
+    ripgrep
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -76,10 +81,16 @@
 
   # Imports the modules for different configs.
   imports = [
+    # WM setup
     ./sway.nix
-    ./bash.nix
     ./waybar.nix
     ./mako.nix
+    ./tofi.nix
+    
+    # Shell
+    ./bash.nix
+
+    # The dotfile lib
     ../../modules/home-manager/lib.nix
   ];
 

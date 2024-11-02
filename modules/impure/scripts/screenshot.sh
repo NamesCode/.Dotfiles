@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 DATE=$(date '+%Y-%m-%d')
-FILENAME=$(printf "%s\nscreenshot\nclipboard\nquit\n" "$DATE" | dmenu)
+FILENAME=$(printf "%s\nscreenshot\nclipboard\nquit\n" "$DATE" | tofi)
 
 
 if [ "$FILENAME" == "clipboard" ]; then

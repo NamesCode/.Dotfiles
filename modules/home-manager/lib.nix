@@ -8,7 +8,7 @@
     mainFont = lib.mkOption {
       description = "The font that all themed applications should follow";
       example = "Sans Serif";
-      type = lib.types.string;
+      type = lib.types.str;
     };
     wallpaper = lib.mkOption {
       description = "The wallpaper that should be used";
