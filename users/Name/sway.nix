@@ -2,14 +2,14 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
+  # Modifier key
   modifier = "Mod4";
-
+  # Keyboard backlight device
+  keyboard = "kbd_backlight";
   # Patch dmenu to theme it because its a suckless util
   # FIX: ctp-dmenu = pkgs.dmenu.override( { patches = [ ../../modules/impure/patches/ctp-dmenu.patch ];} );
-in
-{
+in {
   # Configure Sway
   wayland.windowManager.sway = {
     enable = true;
@@ -18,8 +18,8 @@ in
     config = {
       # Sets the wallpaper for all outputs
       output."*".bg = "${config.vars.wallpaper} fill";
-      
-      fonts.names = [ "${config.vars.mainFont}" ];
+
+      fonts.names = ["${config.vars.mainFont}"];
 
       # Opens in workspace 1
       defaultWorkspace = "workspace number 1";
@@ -85,6 +85,10 @@ in
         "${modifier}+Shift+F1" = "exec brightnessctl s 0%";
         "${modifier}+F2" = "exec brightnessctl s 10+";
         "${modifier}+Shift+F2" = "exec brightnessctl s 100%";
+        "${modifier}+Alt+F1" = "exec brightnessctl -d ${keyboard} s 10-";
+        "${modifier}+Alt+Shift+F1" = "exec brightnessctl -d ${keyboard} s 0%";
+        "${modifier}+Alt+F2" = "exec brightnessctl -d ${keyboard} s 10+";
+        "${modifier}+Alt+Shift+F2" = "exec brightnessctl -d ${keyboard} s 100%";
 
         "${modifier}+F10" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
         "${modifier}+F11" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
@@ -148,11 +152,11 @@ in
       focus.followMouse = false;
       startup = [
         # Since we don't use SystemD for Sway, we must exec Swayidle through Sway
-        { command = "${pkgs.swayidle}/bin/swayidle timeout 120 'swaylock -f' timeout 240 'systemctl suspend' before-sleep 'swaylock -f' lock 'swaylock -f'"; }
-        { command = "${pkgs.mako}/bin/mako --config ${config.xdg.configHome}/mako/config"; }
+        {command = "${pkgs.swayidle}/bin/swayidle timeout 120 'swaylock -f' timeout 240 'systemctl suspend' before-sleep 'swaylock -f' lock 'swaylock -f'";}
+        {command = "${pkgs.mako}/bin/mako --config ${config.xdg.configHome}/mako/config";}
         # Apps
-        { command = "firefox"; }
-        { command = "foot"; }
+        {command = "firefox";}
+        {command = "foot";}
       ];
     };
     wrapperFeatures = {
@@ -200,7 +204,7 @@ in
     # Screenshots
     pkgs.grim
     pkgs.slurp
-    
+
     # Clipboard
     pkgs.wl-clipboard
 

@@ -46,7 +46,7 @@
   # Manage Nix itself
   nix = {
     settings.experimental-features = ["nix-command" "flakes"];
-    
+
     # Manage the garbage collector
     gc = {
       automatic = true;
@@ -85,7 +85,7 @@
     mesa.drivers
   ];
 
-# Run the experimental vulkan driver NOTE: REMOVE IN FUTURE WHEN ITS STABLE
+  # Run the experimental vulkan driver NOTE: REMOVE IN FUTURE WHEN ITS STABLE
   hardware.asahi.useExperimentalGPUDriver = true;
 
   services = {

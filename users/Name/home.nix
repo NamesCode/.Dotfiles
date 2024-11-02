@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "Name";
@@ -21,12 +20,12 @@
   # Lets the system find fonts when installed through HM
   fonts.fontconfig.enableProfileFonts = true;
 
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
     # Install patches dev fonts
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+    htop
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -76,8 +75,13 @@
   };
 
   # Imports the modules for different configs.
-  imports = [ ./sway.nix
-  ./bash.nix ./waybar.nix ./mako.nix ../../modules/home-manager/lib.nix];
+  imports = [
+    ./sway.nix
+    ./bash.nix
+    ./waybar.nix
+    ./mako.nix
+    ../../modules/home-manager/lib.nix
+  ];
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

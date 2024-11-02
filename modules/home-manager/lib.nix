@@ -1,5 +1,8 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  ...
+}: {
   # Define variables here
   options.vars = {
     mainFont = lib.mkOption {

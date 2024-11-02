@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   # Setup bash
   programs.bash = {
     enable = true;
