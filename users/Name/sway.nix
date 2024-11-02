@@ -8,7 +8,7 @@
   # Keyboard backlight device
   keyboard = "kbd_backlight";
   # Patch dmenu to theme it because its a suckless util
-  # FIX: ctp-dmenu = pkgs.dmenu.override( { patches = [ ../../modules/impure/patches/ctp-dmenu.patch ];} );
+  ctp-dmenu = pkgs.dmenu.override( { patches = [ ../../modules/impure/patches/ctp-dmenu.patch ];} );
 in {
   # Configure Sway
   wayland.windowManager.sway = {
@@ -209,8 +209,8 @@ in {
     pkgs.wl-clipboard
 
     # General launcher
-    pkgs.dmenu
-    # ctp-dmenu
+    # pkgs.dmenu
+    ctp-dmenu
 
     # Handle idling
     pkgs.swayidle
